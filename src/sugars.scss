@@ -1,0 +1,120 @@
+@import '~@sfem/breakpoint/lib/breakpoint';
+@import '~@sfem/scss-sugars/lib/sugars';
+@import 'variables';
+@import 'mixins';
+
+// Text
+@if $sugar-enable-ta {
+  @each $val in $sugar-ta-list {
+    @include sugar-generator(ta, $val) {
+      text-align: $val;
+    }
+  }
+}
+
+// ----------------
+
+@if $sugar-enable-fs {
+  @each $val in $sugar-fs-list {
+    @include sugar-generator(fs, $val) {
+      font-style: $val;
+    }
+  }
+}
+
+@if $sugar-enable-fw {
+  @each $val in $sugar-fw-list {
+    @include sugar-generator(fw, $val) {
+      font-weight: $val;
+    }
+  }
+}
+
+@if $sugar-enable-ellipsis {
+  @include sugar-generator(text, ellipsis) {
+    @include ellipsis();
+  }
+}
+
+@if $sugar-enable-bw {
+  @include sugar-generator(text, break-word) {
+    @include break-word();
+  }
+}
+
+
+// Paddings & Margins
+
+@if $sugar-enable-paddings {
+  $sugar-pm-types: join(padding, $sugar-pm-types)
+}
+
+@if $sugar-enable-margins {
+  $sugar-pm-types: join(margin, $sugar-pm-types)
+}
+
+@each $num in $sugar-paddings {
+  @each $type in $sugar-pm-types {
+    @include sugar-generator(str-slice($type, 0, 1), strip-unit($num)) {
+      #{$type}: #{$num};
+    }
+
+    @each $side in $sugar-pm-sides {
+      @include sugar-generator(str-slice($type, 0, 1) + str-slice($side, 0, 1), strip-unit($num)) {
+        #{$type}: #{$num};
+      }
+    }
+  }
+}
+
+// Hiders
+
+@if $sugar-enable-hiders {
+  .hide {
+    display: none;
+  }
+
+  @each $name, $value in $breakpoints {
+    @include bp($name) {
+      .hide-after-#{$name} {
+        display: none;
+      }
+    }
+  }
+
+  @each $name, $value in $breakpoints-before {
+    @include bp($name, $bp: $breakpoints-before) {
+      .hide-before-#{$name} {
+        display: none;
+      }
+    }
+  }
+}
+
+// Aspect Ratio
+
+@if $sugar-enable-aspect-ratio {
+  @each $val in $sugar-ratios {
+    @include sugar-generator(ratio, nth($val, 1) + '-' + nth($val, 2)) {
+      @include aspect-ratio(nth($val, 1), nth($val, 2))
+    }
+  }
+}
+
+// OTHER
+
+@if $sugar-enable-va {
+  [class*='va-'] {
+    display: inline-block;
+  }
+
+  @each $val in $sugar-va-list {
+    @include sugar-generator(va, $val) {
+      vertical-align: #{$val};
+    }
+  }
+}
+
+@include sugar-generator(block, round) {
+  border-radius: 50%;
+}
