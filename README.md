@@ -14,7 +14,7 @@ Usage
 Include css in your html
 
 ```html
-&lt;link rel="stylesheet" type="text/css" href="sugars.css"&gt;
+<link rel="stylesheet" type="text/css" href="sugars.css">
 ```
 
 or import module to your scss
