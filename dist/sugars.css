@@ -188,33 +188,33 @@
 .ratio-1-1 {
   position: relative; }
   .ratio-1-1:before {
-    display: block;
     width: 100%;
     padding-top: 100%;
+    display: block;
     content: ''; }
 
 .ratio-2-1 {
   position: relative; }
   .ratio-2-1:before {
-    display: block;
     width: 100%;
     padding-top: 50%;
+    display: block;
     content: ''; }
 
 .ratio-3-2 {
   position: relative; }
   .ratio-3-2:before {
-    display: block;
     width: 100%;
     padding-top: 66.66667%;
+    display: block;
     content: ''; }
 
 .ratio-4-3 {
   position: relative; }
   .ratio-4-3:before {
-    display: block;
     width: 100%;
     padding-top: 75%;
+    display: block;
     content: ''; }
 
 [class*='va-'] {
@@ -377,30 +377,30 @@
   .ratio-xl-1-1 {
     position: relative; }
     .ratio-xl-1-1:before {
-      display: block;
       width: 100%;
       padding-top: 100%;
+      display: block;
       content: ''; }
   .ratio-xl-2-1 {
     position: relative; }
     .ratio-xl-2-1:before {
-      display: block;
       width: 100%;
       padding-top: 50%;
+      display: block;
       content: ''; }
   .ratio-xl-3-2 {
     position: relative; }
     .ratio-xl-3-2:before {
-      display: block;
       width: 100%;
       padding-top: 66.66667%;
+      display: block;
       content: ''; }
   .ratio-xl-4-3 {
     position: relative; }
     .ratio-xl-4-3:before {
-      display: block;
       width: 100%;
       padding-top: 75%;
+      display: block;
       content: ''; }
   .va-xl-baseline {
     vertical-align: baseline; }
@@ -551,30 +551,30 @@
   .ratio-l-1-1 {
     position: relative; }
     .ratio-l-1-1:before {
-      display: block;
       width: 100%;
       padding-top: 100%;
+      display: block;
       content: ''; }
   .ratio-l-2-1 {
     position: relative; }
     .ratio-l-2-1:before {
-      display: block;
       width: 100%;
       padding-top: 50%;
+      display: block;
       content: ''; }
   .ratio-l-3-2 {
     position: relative; }
     .ratio-l-3-2:before {
-      display: block;
       width: 100%;
       padding-top: 66.66667%;
+      display: block;
       content: ''; }
   .ratio-l-4-3 {
     position: relative; }
     .ratio-l-4-3:before {
-      display: block;
       width: 100%;
       padding-top: 75%;
+      display: block;
       content: ''; }
   .va-l-baseline {
     vertical-align: baseline; }
@@ -725,30 +725,30 @@
   .ratio-m-1-1 {
     position: relative; }
     .ratio-m-1-1:before {
-      display: block;
       width: 100%;
       padding-top: 100%;
+      display: block;
       content: ''; }
   .ratio-m-2-1 {
     position: relative; }
     .ratio-m-2-1:before {
-      display: block;
       width: 100%;
       padding-top: 50%;
+      display: block;
       content: ''; }
   .ratio-m-3-2 {
     position: relative; }
     .ratio-m-3-2:before {
-      display: block;
       width: 100%;
       padding-top: 66.66667%;
+      display: block;
       content: ''; }
   .ratio-m-4-3 {
     position: relative; }
     .ratio-m-4-3:before {
-      display: block;
       width: 100%;
       padding-top: 75%;
+      display: block;
       content: ''; }
   .va-m-baseline {
     vertical-align: baseline; }
@@ -899,30 +899,30 @@
   .ratio-s-1-1 {
     position: relative; }
     .ratio-s-1-1:before {
-      display: block;
       width: 100%;
       padding-top: 100%;
+      display: block;
       content: ''; }
   .ratio-s-2-1 {
     position: relative; }
     .ratio-s-2-1:before {
-      display: block;
       width: 100%;
       padding-top: 50%;
+      display: block;
       content: ''; }
   .ratio-s-3-2 {
     position: relative; }
     .ratio-s-3-2:before {
-      display: block;
       width: 100%;
       padding-top: 66.66667%;
+      display: block;
       content: ''; }
   .ratio-s-4-3 {
     position: relative; }
     .ratio-s-4-3:before {
-      display: block;
       width: 100%;
       padding-top: 75%;
+      display: block;
       content: ''; }
   .va-s-baseline {
     vertical-align: baseline; }
