@@ -60,7 +60,7 @@
 
     @each $side in $sugar-pm-sides {
       @include mq-sugars-generator(str-slice($type, 0, 1) + str-slice($side, 0, 1), '-' + strip-unit($num)) {
-        #{$type}: #{$num};
+        #{$type}-#{$side}: #{$num};
       }
     }
   }
