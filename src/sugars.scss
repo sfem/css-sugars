@@ -5,7 +5,7 @@
 // Text
 @if $sugar-enable-ta {
   @each $val in $sugar-ta-list {
-    @include mq-sugars-generator(ta, $val) {
+    @include mq-sugars-generator(ta, '-' + $val) {
       text-align: $val;
     }
   }
@@ -15,7 +15,7 @@
 
 @if $sugar-enable-fs {
   @each $val in $sugar-fs-list {
-    @include mq-sugars-generator(fs, $val) {
+    @include mq-sugars-generator(fs, '-' + $val) {
       font-style: $val;
     }
   }
@@ -23,20 +23,20 @@
 
 @if $sugar-enable-fw {
   @each $val in $sugar-fw-list {
-    @include mq-sugars-generator(fw, $val) {
+    @include mq-sugars-generator(fw, '-' + $val) {
       font-weight: $val;
     }
   }
 }
 
 @if $sugar-enable-ellipsis {
-  @include mq-sugars-generator(text, ellipsis) {
+  @include mq-sugars-generator(text, -ellipsis) {
     @include ellipsis();
   }
 }
 
 @if $sugar-enable-bw {
-  @include mq-sugars-generator(text, break-word) {
+  @include mq-sugars-generator(text, -break-word) {
     @include break-word();
   }
 }
@@ -54,12 +54,12 @@
 
 @each $num in $sugar-paddings {
   @each $type in $sugar-pm-types {
-    @include mq-sugars-generator(str-slice($type, 0, 1), strip-unit($num)) {
+    @include mq-sugars-generator(str-slice($type, 0, 1), '-' + strip-unit($num)) {
       #{$type}: #{$num};
     }
 
     @each $side in $sugar-pm-sides {
-      @include mq-sugars-generator(str-slice($type, 0, 1) + str-slice($side, 0, 1), strip-unit($num)) {
+      @include mq-sugars-generator(str-slice($type, 0, 1) + str-slice($side, 0, 1), '-' + strip-unit($num)) {
         #{$type}: #{$num};
       }
     }
@@ -69,13 +69,13 @@
 // Hiders
 
 @if $sugar-enable-hiders {
-  .hide {
+  .display--none {
     display: none;
   }
 
   @each $name, $value in $breakpoints {
     @include bp($name) {
-      .hide-after-#{$name} {
+      .display-#{$name}--none {
         display: none;
       }
     }
@@ -83,7 +83,7 @@
 
   @each $name, $value in $breakpoints-before {
     @include bp($name, $bp: $breakpoints-before) {
-      .hide-before-#{$name} {
+      .display-before-#{$name}--none {
         display: none;
       }
     }
@@ -94,7 +94,7 @@
 
 @if $sugar-enable-aspect-ratio {
   @each $val in $sugar-ratios {
-    @include mq-sugars-generator(ratio, nth($val, 1) + '-' + nth($val, 2)) {
+    @include mq-sugars-generator(ratio, '-' +  nth($val, 1) + '-' + nth($val, 2)) {
       @include aspect-ratio(nth($val, 1), nth($val, 2))
     }
   }
@@ -103,17 +103,31 @@
 // OTHER
 
 @if $sugar-enable-va {
-  [class*='va-'] {
+  %va {
     display: inline-block;
   }
 
   @each $val in $sugar-va-list {
-    @include mq-sugars-generator(va, $val) {
+    .va--#{$val} {
+      @extend %va;
+    }
+
+    @each $name, $value in $breakpoints {
+      .va-#{$name}--#{$val} {
+        @extend %va;
+      }
+    }
+
+    @include mq-sugars-generator(va, '-' + $val) {
       vertical-align: #{$val};
     }
   }
 }
 
-@include mq-sugars-generator(block, round) {
+@include mq-sugars-generator('round') {
+  border-radius: 50%;
+}
+
+@include mq-sugars-generator('round', '-none') {
   border-radius: 50%;
 }
