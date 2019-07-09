@@ -45,11 +45,11 @@
 // Paddings & Margins
 
 @if $sugar-enable-paddings {
-  $sugar-pm-types: join(padding, $sugar-pm-types)
+  $sugar-pm-types: join(padding, $sugar-pm-types);
 }
 
 @if $sugar-enable-margins {
-  $sugar-pm-types: join(margin, $sugar-pm-types)
+  $sugar-pm-types: join(margin, $sugar-pm-types);
 }
 
 @each $num in $sugar-paddings {
@@ -66,16 +66,16 @@
   }
 }
 
-// Hiders
+// Displays
 
 @if $sugar-enable-hiders {
-  .display--none {
+  .display--none, .hide {
     display: none;
   }
 
   @each $name, $value in $breakpoints {
     @include bp($name) {
-      .display-#{$name}--none {
+      .display-#{$name}--none, .hide-#{$name} {
         display: none;
       }
     }
@@ -83,9 +83,17 @@
 
   @each $name, $value in $breakpoints-before {
     @include bp($name, $bp: $breakpoints-before) {
-      .display-before-#{$name}--none {
+      .display-before-#{$name}--none, .hide-before-#{$name} {
         display: none;
       }
+    }
+  }
+}
+
+@if $sugar-enable-display {
+  @each $type in (inline, inline-block, flex, inline-flex) {
+    @include mq-sugars-generator(display, '-' + $type) {
+      display: #{$type};
     }
   }
 }
@@ -103,21 +111,7 @@
 // OTHER
 
 @if $sugar-enable-va {
-  %va {
-    display: inline-block;
-  }
-
   @each $val in $sugar-va-list {
-    .va--#{$val} {
-      @extend %va;
-    }
-
-    @each $name, $value in $breakpoints {
-      .va-#{$name}--#{$val} {
-        @extend %va;
-      }
-    }
-
     @include mq-sugars-generator(va, '-' + $val) {
       vertical-align: #{$val};
     }
@@ -129,5 +123,5 @@
 }
 
 @include mq-sugars-generator('round', '-none') {
-  border-radius: 50%;
+  border-radius: 0;
 }

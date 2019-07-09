@@ -6,7 +6,7 @@ import gulp from 'gulp';
 import path from 'path';
 import del from 'del';
 
-import sass from 'gulp-sass';
+import sass from 'gulp-dart-sass';
 import postcss from 'gulp-postcss';
 import autoprefixer from 'autoprefixer';
 import mqpack from 'css-mqpacker';
@@ -20,9 +20,7 @@ import sequence from 'gulp-sequence';
 
 let cssClasses = [];
 const postcssPlugins = [
-  autoprefixer({
-    browsers: ['> 1%', 'Last 2 versions']
-  }),
+  autoprefixer(),
   mqpack(),
   flexbugsFixes()
 ];
@@ -50,13 +48,13 @@ gulp.task('styles', () => {
     ;
 });
 
-gulp.task('watch', ['build'], () => {
-  gulp.watch([
-    path.join('src', '**', '*.scss')
-  ], ['styles']);
-});
-
-gulp.task('build', sequence(
+gulp.task('build', gulp.series(
   'clean',
   'styles',
 ));
+
+gulp.task('watch', gulp.series('build', () => {
+  gulp.watch([
+    path.join('src', '**', '*.scss')
+  ], ['styles']);
+}));
